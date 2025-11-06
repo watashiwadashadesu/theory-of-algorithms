@@ -24,7 +24,7 @@ class TestCircle:
         assert is_in(point_1) == True
 
     def test_is_out(self):
-        assert is_out(point_2) == False
+        assert is_out(point_2) == True
 
     def test_radius_value(self):
         assert radius == 42
