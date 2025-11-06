@@ -18,7 +18,7 @@ def is_in(point):
 def is_out(point):
     """Проверка точки вне круга"""
     distance = (point[0]**2 + point[1]**2)**0.5
-    return distance <= radius
+    return distance > radius
 
 # Точки для проверки
 point_1 = (23, 34)
