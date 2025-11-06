@@ -24,6 +24,7 @@ def shake_zoo():
     # 4. Найти клетки льва и жаворонка (нумерация с 1 для человека)
     lion_cage = zoo.index('lion') + 1
     lark_cage = zoo.index('lark') + 1
-    result += f"4. Лев сидит в клетке №{lion_cage}, жаворонок в клетке №{lark_cage}\n"
+    result += (f"4. Лев сидит в клетке №{lion_cage}, "
+               f"жаворонок в клетке №{lark_cage}\n")
 
     return result

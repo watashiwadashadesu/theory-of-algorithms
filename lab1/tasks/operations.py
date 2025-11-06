@@ -17,13 +17,21 @@ def find_combinations(target=25):
         for use_brackets in brackets:
             if use_brackets:
                 # Вариант 1: (a op b) op c op d op e
-                expr1 = f"({numbers[0]}{op_comb[0]}{numbers[1]}){op_comb[1]}{numbers[2]}{op_comb[2]}{numbers[3]}{op_comb[3]}{numbers[4]}"
+                expr1 = (f"({numbers[0]}{op_comb[0]}{numbers[1]})"
+                         f"{op_comb[1]}{numbers[2]}{op_comb[2]}"
+                         f"{numbers[3]}{op_comb[3]}{numbers[4]}")
                 # Вариант 2: a op (b op c) op d op e
-                expr2 = f"{numbers[0]}{op_comb[0]}({numbers[1]}{op_comb[1]}{numbers[2]}){op_comb[2]}{numbers[3]}{op_comb[3]}{numbers[4]}"
+                expr2 = (f"{numbers[0]}{op_comb[0]}({numbers[1]}"
+                         f"{op_comb[1]}{numbers[2]}){op_comb[2]}"
+                         f"{numbers[3]}{op_comb[3]}{numbers[4]}")
                 # Вариант 3: a op b op (c op d) op e
-                expr3 = f"{numbers[0]}{op_comb[0]}{numbers[1]}{op_comb[1]}({numbers[2]}{op_comb[2]}{numbers[3]}){op_comb[3]}{numbers[4]}"
+                expr3 = (f"{numbers[0]}{op_comb[0]}{numbers[1]}"
+                         f"{op_comb[1]}({numbers[2]}{op_comb[2]}"
+                         f"{numbers[3]}){op_comb[3]}{numbers[4]}")
                 # Вариант 4: (a op b op c) op d op e
-                expr4 = f"({numbers[0]}{op_comb[0]}{numbers[1]}{op_comb[1]}{numbers[2]}){op_comb[2]}{numbers[3]}{op_comb[3]}{numbers[4]}"
+                expr4 = (f"({numbers[0]}{op_comb[0]}{numbers[1]}"
+                         f"{op_comb[1]}{numbers[2]}){op_comb[2]}"
+                         f"{numbers[3]}{op_comb[3]}{numbers[4]}")
 
                 for expr in [expr1, expr2, expr3, expr4]:
                     try:
@@ -33,7 +41,9 @@ def find_combinations(target=25):
                         pass
             else:
                 # Без скобок
-                expr = f"{numbers[0]}{op_comb[0]}{numbers[1]}{op_comb[1]}{numbers[2]}{op_comb[2]}{numbers[3]}{op_comb[3]}{numbers[4]}"
+                expr = (f"{numbers[0]}{op_comb[0]}{numbers[1]}"
+                        f"{op_comb[1]}{numbers[2]}{op_comb[2]}"
+                        f"{numbers[3]}{op_comb[3]}{numbers[4]}")
                 try:
                     if eval(expr) == target:
                         solutions.add(expr)

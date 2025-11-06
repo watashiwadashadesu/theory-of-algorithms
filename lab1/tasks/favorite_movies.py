@@ -40,4 +40,5 @@ def sort_movies():
 
     second_last_movie = my_favorite_movies[prev_comma_pos + 2:last_comma_pos]
 
-    return f"Первый: {first_movie}, второй: {second_movie}, предпоследний: {second_last_movie}, последний: {last_movie}"
+    return (f"Первый: {first_movie}, второй: {second_movie}, предпоследний: "
+            f"{second_last_movie}, последний: {last_movie}")

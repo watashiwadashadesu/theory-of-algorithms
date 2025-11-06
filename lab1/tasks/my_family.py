@@ -17,5 +17,6 @@ def get_height():
     # Общий рост семьи
     total_height = sum(person[1] for person in my_family_height)
 
-    return f"Рост отца - {father_height} см\nОбщий рост моей семьи - {total_height} см"
+    return (f"Рост отца - {father_height} см\nОбщий рост моей семьи - "
+            f"{total_height} см")
 

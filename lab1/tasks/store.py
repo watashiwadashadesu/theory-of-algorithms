@@ -46,6 +46,7 @@ def view_store():
             total_quantity += item['quantity']
             total_cost += item['quantity'] * item['price']
 
-        result += f"{product_name} - {total_quantity} шт, стоимость {total_cost} руб\n"
+        result += (f"{product_name} - {total_quantity} шт, "
+                   f"стоимость {total_cost} руб\n")
 
     return result

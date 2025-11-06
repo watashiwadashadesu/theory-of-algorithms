@@ -27,3 +27,4 @@ def get_sweets():
         for offer in prices:
             result += f"  {offer['shop']}: {offer['price']} руб\n"
     return result
+
