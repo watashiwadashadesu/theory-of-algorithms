@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  postal-service:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+    working_dir: /app
+    stdin_open: true
+    tty: true
