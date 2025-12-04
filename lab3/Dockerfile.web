@@ -1,0 +1,12 @@
+FROM python:3.11-slim
+RUN apt-get update && apt-get install -y \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY requirements_web.txt .
+RUN pip install --no-cache-dir -r requirements_web.txt
+COPY shared/ ./shared/
+COPY web_app/ ./web_app/
+RUN mkdir -p logs
+EXPOSE 8000
+CMD ["uvicorn", "web_app.main:app", "--host", "0.0.0.0", "--port", "8000"]

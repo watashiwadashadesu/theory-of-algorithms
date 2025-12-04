@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.web
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./book_club.db:/app/book_club.db
+      - ./logs:/app/logs
+    environment:
+      - DATABASE_URL=sqlite:///app/book_club.db
+    restart: unless-stopped
+    networks:
+      - bookclub-network
+
+  # Можно добавить PostgreSQL вместо SQLite для продакшена
+  # db:
+  #   image: postgres:15
+  #   environment:
+  #     POSTGRES_DB: bookclub
+  #     POSTGRES_USER: admin
+  #     POSTGRES_PASSWORD: secret
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   networks:
+  #     - bookclub-network
+
+networks:
+  bookclub-network:
+    driver: bridge
+
+# volumes:
+#   postgres_data:
