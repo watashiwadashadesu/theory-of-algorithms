@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  prf-constructor:
+    build: .
+    container_name: prf-constructor
+    volumes:
+      - ./data:/app/data  # Для сохранения базы данных
+      - /tmp/.X11-unix:/tmp/.X11-unix  # Для GUI в Linux
+    environment:
+      - DISPLAY=${DISPLAY}  # Для отображения GUI
+    network_mode: host  # Нужно для GUI приложения

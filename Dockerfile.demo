@@ -1,0 +1,34 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+# Создаем скрипт для демонстрации
+RUN echo '#!/bin/bash
+echo "========================================"
+echo "   PRF Constructor in Docker Container"
+echo "========================================"
+echo ""
+python test_basic.py
+echo ""
+echo "========================================"
+echo "   Interactive Demo"
+echo "========================================"
+python -c "
+from core.function import Zero, Successor
+from core.function_factory import create_addition, create_multiplication
+from core.evaluator import Evaluator
+
+e = Evaluator()
+print(\"1. Zero(10) =\", e.evaluate(Zero(), [10]))
+print(\"2. Successor(5) =\", e.evaluate(Successor(), [5]))
+print(\"3. add(3, 4) =\", e.evaluate(create_addition(), [3, 4]))
+print(\"4. mult(3, 4) =\", e.evaluate(create_multiplication(), [3, 4]))
+"
+' > /app/demo.sh && chmod +x /app/demo.sh
+
+CMD ["/app/demo.sh"]
